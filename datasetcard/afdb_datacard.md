@@ -3,8 +3,6 @@ The AlphaFold Protein Structure Database (AFDB) is a collection of protein struc
 
 We are releasing a subset of the AlphaFold Protein Structure Database. We use two subsets of the AFDB, one comprising 344,508 structures and the other one comprising 46,942,694.
 
-**ID manifest clarification:** The original NGC v1.0 short-chain file contains 344,507 unique IDs. Additional Foldseek representative manifests and their exact counts are now provided in [AFDB ID manifests](afdb_ids/README.md), including both diffusion training stages: 544,501 IDs with beta filtering for initial training, followed by 344,507 IDs with coil and beta filtering for fine-tuning. Supplementary variants include 734,657 IDs without coil or beta filtering. That page distinguishes the filter variants and explains the discrepancy with approximate counts in the paper; the original NGC archive is unchanged.
-
 This dataset is ready for commercial/non-commercial use.
 
 ## Dataset Owner(s):

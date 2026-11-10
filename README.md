@@ -54,11 +54,11 @@ To train models and use our minimal dataloaders, create a file `.env` in the roo
 DATA_PATH=/directory/where/you/want/dataset
 ```
 
-In the paper we train our models on subsets of the AFDB. The original short-chain and long-chain ID lists are in [laproteina_afdb_ids.zip](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara/resources/la_proteina_afdb_ids.zip/files). Additional Foldseek-clustered AFDB lists, including the pLDDT-only set without beta or coil filters, are available in [AFDB ID manifests](datasetcard/afdb_ids/README.md), with exact counts, filter configurations, checksums, and clarification of the paper's approximate dataset sizes.
+In the paper we train our models on subsets of the AFDB. We provide lists of IDs for each dataset in [laproteina_afdb_ids.zip](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara/resources/la_proteina_afdb_ids.zip/files). The complete ID lists for initial diffusion training and fine-tuning are also available [here](datasetcard/afdb_ids/README.md).
 
 ## Dataloaders
 
-We provide minimal dataloader implementations that allow training on different subsets of the PDB. Here we describe how to use these minimal dataloaders. Note that all our models are trained on subsets of the AFDB, not on the PDB, as described in the paper. See the [AFDB ID manifests](datasetcard/afdb_ids/README.md) for the original NGC lists and additional filter variants. The PDB configurations below are dataloader examples, not the AFDB training manifests.
+We provide minimal dataloader implementations that allow training on different subsets of the PDB. Here we describe how to use these minimal dataloaders. Note that all our models are trained on subsets of the AFDB, not on the PDB, as described in the paper. We provide the indices of the AFDB used for the datasets described in the paper [here](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara/resources/la_proteina_afdb_ids.zip/files).
 
 ### PDB dataloader
 
