@@ -54,7 +54,7 @@ To train models and use our minimal dataloaders, create a file `.env` in the roo
 DATA_PATH=/directory/where/you/want/dataset
 ```
 
-In the paper we train our models on subsets of the AFDB. We provide lists of IDs for each dataset in [laproteina_afdb_ids.zip](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara/resources/la_proteina_afdb_ids.zip/files).
+In the paper we train our models on subsets of the AFDB. We provide lists of IDs for each dataset in [laproteina_afdb_ids.zip](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara/resources/la_proteina_afdb_ids.zip/files). The complete ID lists for initial diffusion training and fine-tuning are also available [here](datasetcard/afdb_ids/README.md).
 
 ## Dataloaders
 
