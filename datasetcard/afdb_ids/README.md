@@ -2,22 +2,26 @@
 
 These lists supplement the [NGC v1.0 archive](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara/resources/la_proteina_afdb_ids.zip/files?version=1.0). They contain AFDB identifiers only, exported from the preserved filtered CSV manifests for the Foldseek-clustered AFDB representatives. No structures, new filtering, or train/validation split is included.
 
-All three added lists use the source configuration's length cutoffs of 32 and 512 and average-pLDDT cutoffs of 80 and 100. The actual lengths in these snapshots range from 33 to 511. The following table records the additional **configured thresholds**, not a new recipe for recomputing the snapshots:
+All four repository lists use the source configuration's length cutoffs of 32 and 512 and average-pLDDT cutoffs of 80 and 100. The actual lengths in these snapshots range from 33 to 511. The following table records the additional **configured thresholds**, not a new recipe for recomputing the snapshots:
 
 | ID list | Maximum coil fraction | Maximum consecutive coil residues | Minimum beta fraction | Unique IDs | IDs additional to NGC `AFDB_IDs-512.txt` |
 | --- | --- | --- | --- | ---: | ---: |
 | [pLDDT only](AFDB_IDs-32-512-plddt80.txt.gz) | None | None | None | 734,657 | 390,150 |
 | [pLDDT + coil](AFDB_IDs-32-512-plddt80-coil.txt.gz) | 0.5 | 20 | None | 498,074 | 153,567 |
 | [pLDDT + beta](AFDB_IDs-32-512-plddt80-beta.txt.gz) | None | None | 0.01 | 544,501 | 199,994 |
-| Existing NGC `AFDB_IDs-512.txt` | 0.5 | 20 | 0.01 | 344,507 | 0 |
+| [pLDDT + coil + beta](AFDB_IDs-32-512-plddt80-coil-beta.txt.gz) (also NGC `AFDB_IDs-512.txt`) | 0.5 | 20 | 0.01 | 344,507 | 0 |
 
-Each added file is a complete list for its filter configuration, not just the additional IDs. The existing NGC short-chain list is a subset of every added list; it is exactly the intersection of the coil and beta lists. The NGC archive and its long-chain `AFDB_IDs-896.txt` remain unchanged. The latter is a separate custom AFDB dataset, not a longer version of these Foldseek representative lists.
+Each repository file is a complete list for its filter configuration, not just the additional IDs. The existing NGC short-chain list is a subset of every added list; it is exactly the intersection of the coil and beta lists. The NGC archive and its long-chain `AFDB_IDs-896.txt` remain unchanged. The latter is a separate custom AFDB dataset, not a longer version of these Foldseek representative lists.
+
+## Diffusion training datasets
+
+Initial diffusion training used the **beta-only** manifest (544,501 IDs), followed by fine-tuning on the **coil + beta** manifest (344,507 IDs). Both complete ID lists are included here. The latter contains exactly the same IDs as the original NGC short-chain release, sorted and gzip-compressed. Both stages retain the length and pLDDT filters described above. The pLDDT-only and coil-only manifests are supplementary filter variants, not the two diffusion training stages.
 
 ## Relationship to the paper
 
 [La-Proteina v2, Appendix C.1–C.2](https://arxiv.org/html/2507.09466v2#A3.SS1) describes training in stages and an approximately 550k set before beta filtering. The preserved manifests do not support identifying a dataset by that rounded count alone: the 544,501-entry list already has a beta filter and no coil filters, whereas the coil-filtered list without a beta filter has 498,074 entries. The pLDDT-only list has 734,657 entries.
 
-These exports make each missing variant available with explicit provenance. They do not establish which exact manifest was consumed by every historical checkpoint. In particular, do not treat the 544,501-entry list as a no-beta VAE training set solely because its size is approximately 550k. The counts above describe these source snapshots; the existing model/dataset cards' count of 344,508 differs by one from the 344,507 unique IDs actually present in the NGC v1.0 short-chain file.
+The confirmed diffusion training order is beta-only followed by coil + beta, as described above; the paper's description of the approximately 550k set as preceding beta filtering is inconsistent with these manifests. This clarification does not establish the autoencoder's exact manifest-to-checkpoint mapping. In particular, do not treat the 544,501-entry list as a no-beta VAE training set solely because its size is approximately 550k. The counts above describe these source snapshots; the existing model/dataset cards' count of 344,508 differs by one from the 344,507 unique IDs actually present in the NGC v1.0 short-chain file.
 
 ## Format and verification
 

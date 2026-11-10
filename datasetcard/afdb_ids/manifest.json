@@ -56,7 +56,8 @@
       "plddt_filter_max": 100,
       "file": "AFDB_IDs-32-512-plddt80-beta.txt.gz",
       "location": "repository",
-      "gzip_sha256": "fdb15d5599b6187e8bce849f44065029ebf434f707dcec1426a9861487e877c4"
+      "gzip_sha256": "fdb15d5599b6187e8bce849f44065029ebf434f707dcec1426a9861487e877c4",
+      "training_stage": "diffusion_initial_training"
     },
     {
       "source": "dfd_fcomp_minl_32_maxl_512_mplddtavg_80_Mplddtavg_100_mplddtstd_None_Mplddtstd_None_Mloopprop_0.5_Mloopconsec_20_mbetap_0.01_malphap_None_Mabratio_None.csv",
@@ -72,8 +73,11 @@
       "length_filter_max": 512,
       "plddt_filter_min": 80,
       "plddt_filter_max": 100,
-      "file": "AFDB_IDs-512.txt",
-      "location": "NGC archive v1.0"
+      "file": "AFDB_IDs-32-512-plddt80-coil-beta.txt.gz",
+      "location": "repository",
+      "ngc_file": "AFDB_IDs-512.txt",
+      "gzip_sha256": "64a7e66f6eb1e5d77ca286f2f2c269357c6d4e0693b63591c2ac8705fe8123bc",
+      "training_stage": "diffusion_fine_tuning"
     }
   ]
 }

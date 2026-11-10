@@ -47,7 +47,8 @@ def main():
     beta = sets["AFDB_IDs-32-512-plddt80-beta.txt.gz"]
     require(coil <= full and beta <= full, "Filtered lists must be subsets of pLDDT-only")
     overlap = coil & beta
-    published = next(e for e in manifest["datasets"] if e["location"] == "NGC archive v1.0")
+    published = next(e for e in manifest["datasets"] if e.get("ngc_file") == "AFDB_IDs-512.txt")
+    require(sets[published["file"]] == overlap, "Both-filter list differs from coil/beta intersection")
     require(len(overlap) == published["count"], "Coil/beta intersection count")
     normalized = ("\n".join(sorted(overlap)) + "\n").encode("ascii")
     require(digest(normalized) == published["ids_sha256"], "Coil/beta intersection checksum")
